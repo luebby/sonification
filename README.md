@@ -25,3 +25,8 @@ https://user-images.githubusercontent.com/16047385/115053672-acdd1e00-9edf-11eb-
 
 https://user-images.githubusercontent.com/16047385/115053704-b5355900-9edf-11eb-943b-98b94a876442.mp4
 
+---
+
+## Licence
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
