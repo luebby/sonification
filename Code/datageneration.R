@@ -18,72 +18,76 @@ Density$bimodal <- 0.5 * dnorm(seq(-12,6, length.out = n), mean = -5, sd = 2) +
 
 # wav generation
 soni_norm <- sonify(y = Density$norm, duration = duration, play = FALSE)
-writeWave(soni_norm, "wav/norm.wav")
+writeWave(soni_norm, "norm.wav")
 
 soni_unif <- sonify(y = Density$unif, duration = duration, play = FALSE)
-writeWave(soni_unif, "wav/unif.wav")
+writeWave(soni_unif, "unif.wav")
 
 soni_right <- sonify(y = Density$right, duration = duration, play = FALSE)
-writeWave(soni_right, "wav/right.wav")
+writeWave(soni_right, "right.wav")
 
 soni_left <- sonify(y = Density$left, duration = duration, play = FALSE)
-writeWave(soni_left, "wav/left.wav")
+writeWave(soni_left, "left.wav")
 
 soni_bimodal <- sonify(y = Density$bimodal, duration = duration, play = FALSE)
-writeWave(soni_bimodal, "wav/bimodal.wav")
+writeWave(soni_bimodal, "bimodal.wav")
 
 # gif generation
-p_norm<- gf_line(norm ~ x , data = Density) %>%
+p_norm<- gf_line(norm ~ x , data = Density, size = 2) %>%
   gf_theme(axis.ticks=element_blank(), 
            axis.text=element_blank(),
            panel.background=element_blank(),
-           axis.title=element_blank()) %>%
+           axis.title=element_blank(),
+           plot.title = element_text(size=22)) %>%
   gf_labs(title = "Normal distribution")
 
 anim_norm <- p_norm + transition_reveal(along=x)
-anim_save("wav/norm.gif", animate(anim_norm, duration = duration))
+anim_save("norm.gif", animate(anim_norm, duration = duration))
 
-p_unif<- gf_line(unif ~ x , data = Density) %>%
+p_unif<- gf_line(unif ~ x , data = Density, size = 2) %>%
   gf_theme(axis.ticks=element_blank(), 
            axis.text=element_blank(),
            panel.background=element_blank(),
-           axis.title=element_blank()) %>%
+           axis.title=element_blank(),
+           plot.title = element_text(size=22)) %>%
   gf_labs(title = "Uniform distribution")
 
 anim_unif <- p_unif + transition_reveal(along=x)
-anim_save("wav/unif.gif", animate(anim_unif, duration = duration))
+anim_save("unif.gif", animate(anim_unif, duration = duration))
 
-p_right<- gf_line(right ~ x , data = Density) %>%
+p_right<- gf_line(right ~ x , data = Density, size = 2) %>%
   gf_theme(axis.ticks=element_blank(), 
            axis.text=element_blank(),
            panel.background=element_blank(),
-           axis.title=element_blank()) %>%
+           axis.title=element_blank(),
+           plot.title = element_text(size=22)) %>%
   gf_labs(title = "Right skewed")
 
 anim_right <- p_right + transition_reveal(along=x)
-anim_save("wav/right.gif", animate(anim_right, duration = duration))
+anim_save("right.gif", animate(anim_right, duration = duration))
 
-p_left<- gf_line(left ~ x , data = Density) %>%
+p_left<- gf_line(left ~ x , data = Density, size = 2) %>%
   gf_theme(axis.ticks=element_blank(), 
            axis.text=element_blank(),
            panel.background=element_blank(),
-           axis.title=element_blank()) %>%
+           axis.title=element_blank(),
+           plot.title = element_text(size=22)) %>%
   gf_labs(title = "Left skewed")
 
 anim_left <- p_left + transition_reveal(along=x)
-anim_save("wav/left.gif", animate(anim_left, duration = duration))
+anim_save("left.gif", animate(anim_left, duration = duration))
 
-p_bimodal<- gf_line(bimodal ~ x , data = Density) %>%
+p_bimodal<- gf_line(bimodal ~ x , data = Density, size = 2) %>%
   gf_theme(axis.ticks=element_blank(), 
            axis.text=element_blank(),
            panel.background=element_blank(),
-           axis.title=element_blank()) %>%
+           axis.title=element_blank(),
+           plot.title = element_text(size=22)) %>%
   gf_labs(title = "Bi-Modal distribution")
 
 anim_bimodal <- p_bimodal + transition_reveal(along=x)
-anim_save("wav/bimodal.gif", animate(anim_bimodal, duration = duration))
+anim_save("bimodal.gif", animate(anim_bimodal, duration = duration))
 
 
-# setwd("wav/")
 # system("ffmpeg -f gif -i bimodal.gif bimodalvid.mp4")
 # system("ffmpeg -i bimodalvid.mp4 -i bimodal.wav -c:v copy -c:a aac bimodal.mp4")
