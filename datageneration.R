@@ -1,12 +1,13 @@
-# Libraries
+# Startup
 library(sonify)
 library(ggformula)
 library(gganimate)
 
 # Settings
-duration <- 5
-n <- 10000
+duration <- 5 # Duration (in sec.) of video
+n <- 10000 # Number of points for graph and sound
 
+#############################################
 # Data generation for different distributions
 Density <- data.frame(x = seq(0,1, length.out = n))
 Density$norm <- dnorm(seq(-5,5, length.out = n))
@@ -16,6 +17,7 @@ Density$left <- dchisq(seq(20,0, length.out = n), df = 5)
 Density$bimodal <- 0.5 * dnorm(seq(-12,6, length.out = n), mean = -5, sd = 2) +
   0.5 * dnorm(seq(-12,6, length.out = n), mean = 2, sd = 1) 
 
+################
 # wav generation
 soni_norm <- sonify(y = Density$norm, duration = duration, play = FALSE)
 writeWave(soni_norm, "norm.wav")
@@ -32,6 +34,7 @@ writeWave(soni_left, "left.wav")
 soni_bimodal <- sonify(y = Density$bimodal, duration = duration, play = FALSE)
 writeWave(soni_bimodal, "bimodal.wav")
 
+################
 # gif generation
 p_norm<- gf_line(norm ~ x , data = Density, size = 2) %>%
   gf_theme(axis.ticks=element_blank(), 
@@ -88,6 +91,11 @@ p_bimodal<- gf_line(bimodal ~ x , data = Density, size = 2) %>%
 anim_bimodal <- p_bimodal + transition_reveal(along=x)
 anim_save("bimodal.gif", animate(anim_bimodal, duration = duration))
 
+##################
+# Video generation
+## ffmpeg needed https://ffmpeg.org/
 
-# system("ffmpeg -f gif -i bimodal.gif bimodalvid.mp4")
-# system("ffmpeg -i bimodalvid.mp4 -i bimodal.wav -c:v copy -c:a aac bimodal.mp4")
+# Convert gif to mp4
+system("ffmpeg -f gif -i left.gif leftdummy.mp4")
+# Combine video (gif) and sound (wav)
+system("ffmpeg -i leftdummy.mp4 -i left.wav -c:v copy -c:a aac left.mp4")
