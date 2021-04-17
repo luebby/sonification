@@ -93,8 +93,10 @@ anim_save("bimodal.gif", animate(anim_bimodal, duration = duration))
 
 ##################
 # Video generation
-## ffmpeg needed https://ffmpeg.org/
+# ffmpeg needed https://ffmpeg.org/
 
+
+# Example: Left skewed distribution
 # Convert gif to mp4
 system("ffmpeg -f gif -i left.gif leftdummy.mp4")
 # Combine video (gif) and sound (wav)
