@@ -6,7 +6,7 @@ This short program produces short videos of common distribution with help of the
 
 ## Normal distribution
 
-https://vimeo.com/142172484
+https://player.vimeo.com/video/538042719
 
 ## Uniform distribution
 
