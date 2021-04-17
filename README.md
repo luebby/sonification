@@ -6,23 +6,24 @@ This short program produces short videos of common distribution with help of the
 
 ## Normal distribution
 
-https://player.vimeo.com/video/538042719
+https://vimeo.com/538042719
 
 ## Uniform distribution
 
-
+https://vimeo.com/538042746
 
 ## Right Skewed
 
-
+https://vimeo.com/538042821
 
 ## Left Skewed
 
+https://vimeo.com/538042769
 
 
 ## Bi-Modal
 
-
+https://vimeo.com/538042806
 
 ---
 
